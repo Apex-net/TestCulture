@@ -1,0 +1,120 @@
+﻿@using System.Globalization
+@using System.Threading
+@using TestResources.Test;
+
+@model TestCulture.Models.TestClass
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@*<html lang="@Thread.CurrentThread.CurrentUICulture.Name">*@
+<html>
+    <head>
+        <title>@Index.Greetings</title>
+    </head>
+    <body>
+        <div>
+            
+            <h1>@Index.Greetings</h1>
+            
+            <p>@string.Format(
+                   string.IsNullOrWhiteSpace(Model.Culture) ? Index.AutoCultureTextFormat : Index.ForcedCultureTextFormat,
+                   Thread.CurrentThread.CurrentUICulture.Name)</p>
+            
+            <table border="1">
+                <tr>
+                    <th>@Index.Amount</th>
+                    <td>@Model.Amount</td>
+                </tr>
+                @*<tr>
+                    <th>@Index.DateTimeNow</th>
+                    <td>@Model.CreatedAt</td>
+                </tr>*@
+            </table>
+            
+            <div style="background-color: azure">
+                
+                <h2>Raw</h2>
+                
+                @using (Html.BeginForm("TestPost", "Test", FormMethod.Post))
+                {
+                    @*<div style="background-color: red;">
+                        <p>@Html.ValidationSummary()</p>
+                    </div>*@
+                
+                    <p>@Html.TextBoxFor(x => x.Amount, true)</p>
+                    @*<p>@Html.TextBoxFor(x => x.CreatedAt, true)</p>*@
+                    
+                    @Html.HiddenFor(x => x.Culture)
+                 
+                    @*<input type="submit" />*@
+                    <button type="submit">Submit</button>
+                }
+            </div>
+
+            <div id="masked-form-container" style="background-color: antiquewhite">
+                
+                <h2>Masked</h2>
+                
+                @using (Html.BeginForm("TestPost", "Test", FormMethod.Post))
+                {
+                    @*<div style="background-color: red;">
+                        <p>@Html.ValidationSummary()</p>
+                    </div>*@
+                    
+                    <p>@Html.TextBoxFor(x => x.Amount, true)</p>
+                    @*<p>@Html.TextBoxFor(x => x.CreatedAt)</p>*@
+                    
+                    @Html.HiddenFor(x => x.Culture, true);
+                 
+                    @*<input type="submit" />*@
+                    <button type="submit">Submit</button>
+                }
+            </div>
+        
+        </div>
+        
+        @*<script src="~/Scripts/jquery-2.1.1.js"></script>*@
+        <script src="http://jqueryvalidationunobtrusivenative.azurewebsites.net/bundles/jquery?v=6mzb0ZqMuNYyRyraMphRsI-Pkxxu9zBO1Chyn1R5Dbo1"></script>
+
+        @*<script src="~/Scripts/jquery.validate.js"></script>*@
+        <script src="http://jqueryvalidationunobtrusivenative.azurewebsites.net/bundles/jquery-validation?v=3Ju00S74HCXaarMLyn_6GGgbuS4Ulygwx8xc_cmCn3o1"></script>
+
+        @*<script src="~/Scripts/globalize/globalize.js"></script>*@
+        <script src="http://jqueryvalidationunobtrusivenative.azurewebsites.net/Scripts/globalize/globalize.js"></script>
+        @*<script src="~/Scripts/globalize/cultures/globalize.cultures.js"></script>*@
+        @*<script src="~/Scripts/globalize/cultures/globalize.culture.en-GB.js"></script>*@
+        <script src="http://jqueryvalidationunobtrusivenative.azurewebsites.net/scripts/globalize/cultures/globalize.culture.en-US.js"></script>
+        @*<script src="~/Scripts/globalize/cultures/globalize.culture.it-IT.js"></script>*@
+
+        @*<script src="~/Scripts/jquery.validate.globalize.js"></script>*@
+        <script src="http://jqueryvalidationunobtrusivenative.azurewebsites.net/Scripts/jquery.validate.globalize.js"></script>
+
+        <script>
+            $(function () {
+                @*Globalize.culture("@Thread.CurrentThread.CurrentUICulture.Name");*@
+            });
+            Globalize.culture("en-GB");
+            $("form").validate();
+        </script>
+        
+        <script>
+            $(function() {
+                $("#masked-form-container[name=Amount]").inputmask(
+                    "decimal",
+                    {
+                        radixPoint: "@NumberFormatInfo.CurrentInfo.NumberDecimalSeparator"
+                    });
+            });
+
+            @*$(function() {
+                $("#masked-form-container [name=CreatedAt]").inputmask(
+                    "@DateTimeFormatInfo.CurrentInfo.RFC1123Pattern");
+            });*@
+        </script>
+
+    </body>
+</html>

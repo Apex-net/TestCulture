@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCulture", "TestCulture\TestCulture.csproj", "{38072B18-A157-42A4-B319-190CE6F4DA39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestResources", "TestResources\TestResources.csproj", "{674A916C-3783-4432-B48C-E0B65C525B75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38072B18-A157-42A4-B319-190CE6F4DA39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38072B18-A157-42A4-B319-190CE6F4DA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38072B18-A157-42A4-B319-190CE6F4DA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38072B18-A157-42A4-B319-190CE6F4DA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674A916C-3783-4432-B48C-E0B65C525B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674A916C-3783-4432-B48C-E0B65C525B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674A916C-3783-4432-B48C-E0B65C525B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674A916C-3783-4432-B48C-E0B65C525B75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
